@@ -1,6 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
@@ -12,7 +9,7 @@ kotlin {
     androidLibrary {
         compileSdk = 36
         minSdk = 26
-        namespace = "com.plcoding.kmp_gradle9_migration.composeapp"
+        namespace = "com.plcoding.shared.composeapp"
         experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
     }
     

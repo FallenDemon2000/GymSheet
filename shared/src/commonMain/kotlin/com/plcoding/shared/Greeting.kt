@@ -1,4 +1,4 @@
-package com.plcoding.kmp_gradle9_migration
+package com.plcoding.shared
 
 class Greeting {
     private val platform = getPlatform()

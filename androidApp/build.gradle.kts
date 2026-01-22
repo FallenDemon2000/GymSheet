@@ -34,15 +34,15 @@ android {
 dependencies {
     implementation(projects.shared)
 
-    implementation(platform(libs.androidx.compose.bom))
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(platform(libs.compose.bom))
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.tooling.preview)
 
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

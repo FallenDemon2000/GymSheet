@@ -1,4 +1,4 @@
-package com.plcoding.kmp_gradle9_migration
+package com.plcoding.shared
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -14,14 +14,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 import org.jetbrains.compose.resources.painterResource
 import gymsheet.shared.generated.resources.Res
 import gymsheet.shared.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App() {
-    MaterialTheme {
+fun GymSheetApp() {
+    GymSheetTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
