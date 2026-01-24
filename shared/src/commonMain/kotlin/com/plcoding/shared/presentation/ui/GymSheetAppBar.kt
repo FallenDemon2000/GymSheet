@@ -30,10 +30,6 @@ fun GymSheetAppBar(
 
     CenterAlignedTopAppBar(
         modifier = modifier,
-        colors = topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-        ),
         title = {
             Text(
                 title,
@@ -53,10 +49,21 @@ fun GymSheetAppBar(
     )
 }
 
-@Composable
 @Preview
+@Composable
 private fun GymSheetAppBarPreview() {
     GymSheetTheme {
+        GymSheetAppBar(
+            title = "Gym Sheet",
+            navController = rememberNavController(),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun GymSheetAppBarPreviewDarkTheme() {
+    GymSheetTheme(darkTheme = true) {
         GymSheetAppBar(
             title = "Gym Sheet",
             navController = rememberNavController(),
