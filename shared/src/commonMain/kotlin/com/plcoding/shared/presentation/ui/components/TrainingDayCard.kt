@@ -1,4 +1,4 @@
-package com.plcoding.shared.presentation.ui
+package com.plcoding.shared.presentation.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,17 +14,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.plcoding.shared.presentation.icons.BackDayIcon
+import com.plcoding.shared.presentation.model.TrainingDay
+import com.plcoding.shared.presentation.ui.Dimens
 import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 
 @Composable
 fun TrainingDayCard(
-    onClick: () -> Unit,
+    trainingDay: TrainingDay,
+    onClick: (TrainingDay) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Card(onClick = onClick, modifier = modifier) {
+    Card(onClick = { onClick(trainingDay) }, modifier = modifier) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(12.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -34,17 +38,18 @@ fun TrainingDayCard(
                 verticalArrangement = Arrangement.spacedBy(2.dp),
             ) {
                 Text(
-                    text = "Day 1",
-                    style = MaterialTheme.typography.titleMedium,
+                    text = "Day ${trainingDay.day}",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "Back and biceps",
-                    style = MaterialTheme.typography.bodySmall,
+                    text = trainingDay.description,
+                    style = MaterialTheme.typography.bodyMedium,
                 )
             }
             Icon(
-                imageVector = BackDayIcon,
-                contentDescription = "Training Day Icon",
+                imageVector = trainingDay.icon,
+                contentDescription = trainingDay.contentDescription,
                 tint = Color.Unspecified,
                 modifier = Modifier.height(Dimens.TrainingDayIcon),
             )
@@ -57,6 +62,7 @@ fun TrainingDayCard(
 private fun TrainingDayCardPreview() {
     GymSheetTheme {
         TrainingDayCard(
+            trainingDay = TrainingDay.empty,
             onClick = {},
             modifier = Modifier.fillMaxWidth(),
         )
@@ -68,6 +74,7 @@ private fun TrainingDayCardPreview() {
 private fun TrainingDayCardPreviewDarkTheme() {
     GymSheetTheme(darkTheme = true) {
         TrainingDayCard(
+            trainingDay = TrainingDay.empty,
             onClick = {},
             modifier = Modifier.fillMaxWidth(),
         )
