@@ -14,7 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.plcoding.shared.presentation.model.TrainingDay
 import com.plcoding.shared.presentation.ui.components.ErrorMessage
 import com.plcoding.shared.presentation.ui.components.GymSheetAppBar
@@ -27,12 +26,13 @@ import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
+    onNavigate: (Screens) -> Unit,
     trainingDaysViewModel: TrainingDaysViewModel = koinInject(),
 ) {
     val trainingDaysState by trainingDaysViewModel.uiState.collectAsState()
+    val onCardClick: (TrainingDay) -> Unit = { onNavigate(Screens.Exercises(it.day)) }
 
-    Scaffold(topBar = { GymSheetAppBar("Gym Sheet", navController) }) { paddingValues ->
+    Scaffold(topBar = getTopBar()) { paddingValues ->
         when (trainingDaysState) {
             is TrainingDaysUiState.Loading -> {
                 LoadingIndicator()
@@ -47,6 +47,7 @@ fun HomeScreen(
                 val state = trainingDaysState as TrainingDaysUiState.Success
                 TrainingDaysView(
                     trainingDays = state.trainingDays,
+                    onCardClick = onCardClick,
                     paddingValues = paddingValues,
                 )
             }
@@ -55,8 +56,9 @@ fun HomeScreen(
 }
 
 @Composable
-fun TrainingDaysView(
+private fun TrainingDaysView(
     trainingDays: List<TrainingDay>,
+    onCardClick: (TrainingDay) -> Unit,
     paddingValues: PaddingValues = PaddingValues(),
 ) {
     LazyColumn(
@@ -64,8 +66,6 @@ fun TrainingDaysView(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(items = trainingDays) { day ->
-            val onCardClick: (TrainingDay) -> Unit = {}
-
             TrainingDayCard(
                 trainingDay = day,
                 onClick = onCardClick,
@@ -77,12 +77,20 @@ fun TrainingDaysView(
     }
 }
 
+private fun getTopBar(): @Composable (() -> Unit) = {
+    GymSheetAppBar(
+        title = "Gym Sheet",
+        hasPreviousPage = false,
+    )
+}
+
 @Preview
 @Composable
 private fun TrainingDaysListPreview() {
     GymSheetTheme {
         TrainingDaysView(
             trainingDays = List(5) { TrainingDay.empty },
+            onCardClick = {}
         )
     }
 }
@@ -93,6 +101,7 @@ private fun TrainingDaysListPreviewDarkTheme() {
     GymSheetTheme(darkTheme = true) {
         TrainingDaysView(
             trainingDays = List(5) { TrainingDay.empty },
+            onCardClick = {}
         )
     }
 }
