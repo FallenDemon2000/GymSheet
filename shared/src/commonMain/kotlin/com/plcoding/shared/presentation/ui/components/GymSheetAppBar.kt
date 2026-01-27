@@ -11,21 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.plcoding.shared.presentation.ui.screens.Screens
 import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GymSheetAppBar(
     title: String,
-    navController: NavHostController,
+    hasPreviousPage: Boolean,
+    onBackClick: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
-    val hasPreviousPage = navController.currentDestination?.route != Screens.HOME.route
-    val onBackArrowClick: () -> Unit = { navController.popBackStack() }
-
     CenterAlignedTopAppBar(
         modifier = modifier,
         title = {
@@ -37,7 +32,7 @@ fun GymSheetAppBar(
         },
         navigationIcon = {
             if (hasPreviousPage)
-                IconButton(onClick = onBackArrowClick) {
+                IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Localized description"
@@ -53,7 +48,7 @@ private fun GymSheetAppBarPreview() {
     GymSheetTheme {
         GymSheetAppBar(
             title = "Gym Sheet",
-            navController = rememberNavController(),
+            hasPreviousPage = false,
         )
     }
 }
@@ -64,7 +59,7 @@ private fun GymSheetAppBarPreviewDarkTheme() {
     GymSheetTheme(darkTheme = true) {
         GymSheetAppBar(
             title = "Gym Sheet",
-            navController = rememberNavController(),
+            hasPreviousPage = true,
         )
     }
 }

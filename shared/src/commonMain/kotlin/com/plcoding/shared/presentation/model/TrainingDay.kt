@@ -8,6 +8,7 @@ data class TrainingDay(
     val description: String,
     val icon: ImageVector,
     val contentDescription: String,
+    val exercises: List<Exercise>,
 ) {
     companion object {
         val empty
@@ -15,7 +16,8 @@ data class TrainingDay(
                 day = 0,
                 description = "description",
                 icon = BackDayIcon,
-                contentDescription = "content description"
+                contentDescription = "content description",
+                exercises = emptyList()
             )
     }
 }

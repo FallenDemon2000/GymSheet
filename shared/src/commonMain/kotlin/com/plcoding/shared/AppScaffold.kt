@@ -9,6 +9,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.plcoding.shared.presentation.ui.screens.ExercisesScreen
 import com.plcoding.shared.presentation.ui.screens.HomeScreen
 import com.plcoding.shared.presentation.ui.screens.Screens
 
@@ -18,7 +20,7 @@ fun AppScaffold() {
     Scaffold {
         AppNavHost(
             navController = rememberNavController(),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -28,13 +30,20 @@ private fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
+    val onNavigate:(Screens) -> Unit = { screen -> navController.navigate(screen) }
+    val onBackClick: () -> Unit = { navController.popBackStack() }
+
     NavHost(
         navController = navController,
-        startDestination = Screens.HOME.route,
+        startDestination = Screens.Home,
         modifier = modifier,
     ) {
-        composable(Screens.HOME.route) {
-            HomeScreen(navController = navController)
+        composable<Screens.Home> {
+            HomeScreen(onNavigate = onNavigate)
+        }
+        composable<Screens.Exercises> { navBackStackEntry ->
+            val trainingDay = navBackStackEntry.toRoute<Screens.Exercises>().trainingDay
+            ExercisesScreen(trainingDay = trainingDay, onBackClick = onBackClick)
         }
     }
 }
