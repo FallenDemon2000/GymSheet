@@ -11,11 +11,14 @@ androidx-material = "1.7.3"
 androidx-material3 = "1.9.0"
 andriodx-navigation = "2.9.1"
 detekt = "1.23.8"
-koin = "4.1.1"
+koin-boom = "4.1.1"
+ksp = "2.3.5"
 junit = "4.13.2"
 kotlin = "2.3.0"
 material = "1.13.0"
 composeBom = "2026.01.00"
+room = "2.8.4"
+sqlite = "2.6.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -41,6 +44,7 @@ androidx-ui-tooling = { group = "org.jetbrains.compose.ui", name ="ui-tooling", 
 androidx-ui-tooling-preview = { group = "org.jetbrains.compose.ui", name ="ui-tooling-preview", version.ref = "composeMultiplatform"}
 androidx-components-resources = { group = "org.jetbrains.compose.components", name ="components-resources", version.ref = "composeMultiplatform"}
 
+# Compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -48,10 +52,18 @@ compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+# Koin
+koin-boom = { module = "io.insert-koin:koin-bom", version.ref = "koin-boom" }
+koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose"}
+koin-android = { group = "io.insert-koin", name = "koin-android"}
+koin-compose = { group = "io.insert-koin", name = "koin-compose"}
+koin-core = { group = "io.insert-koin", name = "koin-core" }
+
+# Room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.ref = "sqlite" }
+room-sqlite-wrapper = { group = "androidx.room", name = "room-sqlite-wrapper", version.ref = "room" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -59,5 +71,7 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidKmpLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+room = { id = "androidx.room", version.ref = "room" }

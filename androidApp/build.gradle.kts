@@ -35,6 +35,7 @@ dependencies {
     // ADVANCED Implementation
     implementation(projects.shared)
     implementation(platform(libs.compose.bom))
+    implementation(platform(libs.koin.boom))
 
     // APP Implementation
     implementation(libs.androidx.activity.compose)
