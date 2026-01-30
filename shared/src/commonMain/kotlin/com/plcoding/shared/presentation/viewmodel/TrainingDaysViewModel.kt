@@ -2,7 +2,6 @@ package com.plcoding.shared.presentation.viewmodel
 
 import com.plcoding.shared.BaseViewModel
 import com.plcoding.shared.data.repository.api.TrainingDaysRepository
-import com.plcoding.shared.presentation.model.TrainingDay
 import com.plcoding.shared.presentation.ui.uistate.TrainingDaysUiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.plcoding.shared.presentation.model
+package com.plcoding.shared.data.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.plcoding.shared.presentation.icons.BackDayIcon

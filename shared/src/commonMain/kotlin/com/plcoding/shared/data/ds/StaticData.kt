@@ -3,9 +3,9 @@ package com.plcoding.shared.data.ds
 import com.plcoding.shared.presentation.icons.BackDayIcon
 import com.plcoding.shared.presentation.icons.ChestDayIcon
 import com.plcoding.shared.presentation.icons.LegDayIcon
-import com.plcoding.shared.presentation.model.Difficulty
-import com.plcoding.shared.presentation.model.Exercise
-import com.plcoding.shared.presentation.model.TrainingDay
+import com.plcoding.shared.data.model.Difficulty
+import com.plcoding.shared.data.model.Exercise
+import com.plcoding.shared.data.model.TrainingDay
 
 object StaticData {
     val staticTrainingDays

@@ -1,4 +1,4 @@
-package com.plcoding.shared.presentation.model
+package com.plcoding.shared.data.model
 
 data class Exercise(
     val name: String,
