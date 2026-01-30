@@ -12,8 +12,8 @@ class TrainingDaysDataSourceImpl: TrainingDaysDataSource {
         return StaticData.staticTrainingDays
     }
 
-    override suspend fun getExercises(day: Int): List<Exercise>? {
+    override suspend fun getExercises(day: Int): List<Exercise> {
         delay(1000L)
-        return StaticData.staticTrainingDays.firstOrNull { it.day == day }?.exercises
+        return StaticData.staticExercises.filter { it.day == day }
     }
 }
