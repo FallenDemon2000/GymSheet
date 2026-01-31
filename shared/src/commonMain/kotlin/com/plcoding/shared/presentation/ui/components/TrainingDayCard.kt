@@ -19,11 +19,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.plcoding.shared.data.model.TargetMuscle
-import com.plcoding.shared.data.model.TrainingDay
 import com.plcoding.shared.presentation.icons.BackDayIcon
 import com.plcoding.shared.presentation.icons.ChestDayIcon
 import com.plcoding.shared.presentation.icons.LegDayIcon
+import com.plcoding.shared.data.model.TargetMuscle
+import com.plcoding.shared.presentation.model.TrainingDay
 import com.plcoding.shared.presentation.ui.Dimens
 import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 

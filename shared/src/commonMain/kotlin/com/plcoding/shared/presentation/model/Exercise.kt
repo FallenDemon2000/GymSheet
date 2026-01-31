@@ -1,4 +1,4 @@
-package com.plcoding.shared.data.model
+package com.plcoding.shared.presentation.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

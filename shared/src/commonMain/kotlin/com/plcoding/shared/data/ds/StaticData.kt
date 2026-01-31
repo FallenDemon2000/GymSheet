@@ -1,9 +1,9 @@
 package com.plcoding.shared.data.ds
 
-import com.plcoding.shared.data.model.Difficulty
-import com.plcoding.shared.data.model.Exercise
+import com.plcoding.shared.presentation.model.Difficulty
+import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.data.model.TargetMuscle
-import com.plcoding.shared.data.model.TrainingDay
+import com.plcoding.shared.presentation.model.TrainingDay
 
 object StaticData {
     val staticTrainingDays

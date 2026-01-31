@@ -1,7 +1,8 @@
-package com.plcoding.shared.data.model
+package com.plcoding.shared.presentation.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.plcoding.shared.data.model.TargetMuscle
 
 @Entity(tableName = "trainingDay")
 data class TrainingDay(

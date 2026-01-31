@@ -1,6 +1,6 @@
 package com.plcoding.shared.presentation.ui.uistate
 
-import com.plcoding.shared.data.model.Exercise
+import com.plcoding.shared.presentation.model.Exercise
 
 sealed interface ExercisesUiState {
     object Loading: ExercisesUiState
