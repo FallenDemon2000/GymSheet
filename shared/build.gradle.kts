@@ -24,6 +24,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "shared"
             isStatic = true
+            linkerOpts.add("-lsqlite3")
         }
     }
     
@@ -68,7 +69,7 @@ dependencies {
 }
 
 room {
-    schemaDirectory("$projectDir/schemas")
+    schemaDirectory("$projectDir/build/schemas")
 }
 
 compose.resources {
