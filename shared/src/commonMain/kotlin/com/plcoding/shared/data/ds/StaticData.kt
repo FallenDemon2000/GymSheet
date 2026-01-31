@@ -7,10 +7,10 @@ import com.plcoding.shared.data.model.TrainingDay
 
 object StaticData {
     val staticTrainingDays
-        get() = listOf(backDay, chestDay, legDay)
+        get() = arrayOf(backDay, chestDay, legDay)
 
     val staticExercises
-        get() = listOf(*backExercises, *chestExercises, *legExercises)
+        get() = arrayOf(*backExercises, *chestExercises, *legExercises)
 
     // BACK DAY EXERCISES
     private val backDay =

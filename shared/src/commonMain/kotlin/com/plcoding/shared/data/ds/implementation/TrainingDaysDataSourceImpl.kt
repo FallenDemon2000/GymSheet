@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 class TrainingDaysDataSourceImpl: TrainingDaysDataSource {
     override suspend fun getTrainingDays(): List<TrainingDay> {
         delay(2000L)
-        return StaticData.staticTrainingDays
+        return StaticData.staticTrainingDays.toList()
     }
 
     override suspend fun getExercises(day: Int): List<Exercise> {

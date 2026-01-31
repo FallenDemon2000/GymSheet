@@ -20,8 +20,8 @@ interface ExercisesDao {
     fun getExercisesByDay(day: Int): Flow<List<Exercise>>
 
     @Insert
-    suspend fun insertDay(artist: TrainingDay)
+    suspend fun insertDays(vararg trainingDay: TrainingDay)
 
     @Insert
-    suspend fun insertAlbum(vararg album: Exercise)
+    suspend fun insertExercises(vararg exercise: Exercise)
 }
