@@ -1,6 +1,8 @@
 package com.plcoding.shared.data.repository.implementation
 
 import com.plcoding.shared.data.ds.ExercisesDao
+import com.plcoding.shared.data.ktx.mapToExercise
+import com.plcoding.shared.data.ktx.mapToTrainingDay
 import com.plcoding.shared.data.repository.api.TrainingDaysRepository
 import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.presentation.model.TrainingDay
@@ -12,8 +14,8 @@ class TrainingDaysRepositoryImpl(
 ) : TrainingDaysRepository {
 
     override suspend fun getTrainingDays(): Flow<List<TrainingDay>> =
-        exercisesDao.getTrainingDays().map { list -> list.map { it.trainingDay } }
+        exercisesDao.getTrainingDays().map { it.mapToTrainingDay() }
 
     override suspend fun getExercises(day: Int): Flow<List<Exercise>> =
-        exercisesDao.getExercisesByDay(day)
+        exercisesDao.getExercisesByDay(day).map { it.mapToExercise() }
 }
