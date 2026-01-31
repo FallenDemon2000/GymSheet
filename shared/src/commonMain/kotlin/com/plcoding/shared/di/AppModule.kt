@@ -3,8 +3,6 @@ package com.plcoding.shared.di
 import com.plcoding.shared.data.ds.ExercisesDao
 import com.plcoding.shared.data.ds.ExercisesDatabase
 import com.plcoding.shared.data.ds.ExercisesDbCallback
-import com.plcoding.shared.data.ds.api.TrainingDaysDataSource
-import com.plcoding.shared.data.ds.implementation.TrainingDaysDataSourceImpl
 import com.plcoding.shared.data.repository.api.TrainingDaysRepository
 import com.plcoding.shared.data.repository.implementation.TrainingDaysRepositoryImpl
 import com.plcoding.shared.presentation.viewmodel.ExercisesViewModel
@@ -19,7 +17,6 @@ val appModule = module {
     // Data Layer
     singleOf(::ExercisesDbCallback)
     single<ExercisesDao> { get<ExercisesDatabase>().exercisesDao() }
-    singleOf(::TrainingDaysDataSourceImpl) bind TrainingDaysDataSource::class
     singleOf(::TrainingDaysRepositoryImpl) bind TrainingDaysRepository::class
 
     // Domain Layer
