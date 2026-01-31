@@ -1,23 +1,22 @@
-package com.plcoding.shared.presentation.model
+package com.plcoding.shared.data.model
 
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.plcoding.shared.presentation.icons.BackDayIcon
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "trainingDay")
 data class TrainingDay(
-    val day: Int,
+    @PrimaryKey val day: Int,
     val description: String,
-    val icon: ImageVector,
     val contentDescription: String,
-    val exercises: List<Exercise>,
+    val target: TargetMuscle,
 ) {
     companion object {
         val empty
             get() = TrainingDay(
                 day = 0,
                 description = "description",
-                icon = BackDayIcon,
                 contentDescription = "content description",
-                exercises = emptyList()
+                target = TargetMuscle.UNKNOWN,
             )
     }
 }

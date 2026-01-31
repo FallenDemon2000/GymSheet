@@ -4,4 +4,4 @@ import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 
 fun initKoin(): KoinApplication =
-    startKoin { modules(appModule) }
+    startKoin { modules(appModule + platformModule) }

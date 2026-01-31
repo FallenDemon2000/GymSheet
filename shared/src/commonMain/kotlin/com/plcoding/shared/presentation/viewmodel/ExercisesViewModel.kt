@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class ExercisesViewModel(
     trainingDay: Int,
     private val trainingDaysRepository: TrainingDaysRepository,
-): BaseViewModel() {
+) : BaseViewModel() {
 
     private val _uiState: MutableStateFlow<ExercisesUiState> =
         MutableStateFlow(ExercisesUiState.Loading)
@@ -25,10 +25,12 @@ class ExercisesViewModel(
     }
 
     fun fetchExercises(trainingDay: Int) = scope.launch {
-        _uiState.update {
-            trainingDaysRepository.getExercises(trainingDay)
-                ?.let { ExercisesUiState.Success(exercises = it) }
-                ?: ExercisesUiState.Error(message = "Request failed")
+        trainingDaysRepository.getExercises(trainingDay).collect { exercises ->
+            _uiState.update {
+                exercises.takeIf { it.isNotEmpty() }
+                    ?.let { ExercisesUiState.Success(exercises = it) }
+                    ?: ExercisesUiState.Error(message = "No exercises for this day")
+            }
         }
     }
 }

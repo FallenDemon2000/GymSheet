@@ -2,9 +2,7 @@ package com.plcoding.shared.presentation.viewmodel
 
 import com.plcoding.shared.BaseViewModel
 import com.plcoding.shared.data.repository.api.TrainingDaysRepository
-import com.plcoding.shared.presentation.model.TrainingDay
 import com.plcoding.shared.presentation.ui.uistate.TrainingDaysUiState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,10 +24,8 @@ class TrainingDaysViewModel(
     }
 
     fun fetchTrainingDays() = scope.launch {
-        _uiState.update {
-            delay(1000L)
-            val result = trainingDaysRepository.getTrainingDays()
-            TrainingDaysUiState.Success(result)
+        trainingDaysRepository.getTrainingDays().collect { trainingDays ->
+            _uiState.update { TrainingDaysUiState.Success(trainingDays) }
         }
     }
 }
