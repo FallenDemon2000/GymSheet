@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -19,10 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.plcoding.shared.presentation.icons.BackDayIcon
-import com.plcoding.shared.presentation.icons.ChestDayIcon
-import com.plcoding.shared.presentation.icons.LegDayIcon
-import com.plcoding.shared.data.model.TargetMuscle
 import com.plcoding.shared.presentation.model.TrainingDay
 import com.plcoding.shared.presentation.ui.Dimens
 import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
@@ -53,7 +47,7 @@ fun TrainingDayCard(
                 )
             }
             Icon(
-                imageVector = trainingDay.target.getIcon(),
+                imageVector = trainingDay.icon,
                 contentDescription = trainingDay.contentDescription,
                 tint = Color.Unspecified,
                 modifier = Modifier.height(Dimens.TrainingDayIcon),
@@ -61,14 +55,6 @@ fun TrainingDayCard(
         }
     }
 }
-
-private fun TargetMuscle.getIcon() =
-    when(this) {
-        TargetMuscle.BACK -> BackDayIcon
-        TargetMuscle.CHEST -> ChestDayIcon
-        TargetMuscle.LEGS -> LegDayIcon
-        TargetMuscle.UNKNOWN -> Icons.Default.Circle
-    }
 
 @Preview
 @Composable

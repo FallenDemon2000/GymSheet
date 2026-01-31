@@ -1,15 +1,14 @@
 package com.plcoding.shared.presentation.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.plcoding.shared.data.model.TargetMuscle
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Circle
+import androidx.compose.ui.graphics.vector.ImageVector
 
-@Entity(tableName = "trainingDay")
 data class TrainingDay(
-    @PrimaryKey val day: Int,
+    val day: Int,
     val description: String,
     val contentDescription: String,
-    val target: TargetMuscle,
+    val icon: ImageVector,
 ) {
     companion object {
         val empty
@@ -17,7 +16,7 @@ data class TrainingDay(
                 day = 0,
                 description = "description",
                 contentDescription = "content description",
-                target = TargetMuscle.UNKNOWN,
+                icon = Icons.Default.Circle,
             )
     }
 }

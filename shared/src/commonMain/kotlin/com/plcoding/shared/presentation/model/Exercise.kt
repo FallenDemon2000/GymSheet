@@ -1,24 +1,7 @@
 package com.plcoding.shared.presentation.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
-
-@Entity(
-    tableName = "exercise", foreignKeys = [
-        ForeignKey(
-            entity = TrainingDay::class,
-            parentColumns = arrayOf("day"),
-            childColumns = arrayOf("day"),
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE,
-        )
-    ]
-)
 data class Exercise(
-    @PrimaryKey val id: Int? = null,
-    @ColumnInfo(index = true) val day: Int,
+    val day: Int,
     val name: String,
     val sets: Int,
     val reps: Int,

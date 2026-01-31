@@ -1,9 +1,15 @@
 package com.plcoding.shared.data.ktx
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Circle
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.plcoding.shared.data.model.ExerciseEntity
 import com.plcoding.shared.data.model.TargetMuscle
 import com.plcoding.shared.data.model.TrainingDayEntity
 import com.plcoding.shared.data.model.TrainingDaysAndExercise
+import com.plcoding.shared.presentation.icons.BackDayIcon
+import com.plcoding.shared.presentation.icons.ChestDayIcon
+import com.plcoding.shared.presentation.icons.LegDayIcon
 import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.presentation.model.TrainingDay
 
@@ -18,7 +24,7 @@ private fun TrainingDayEntity.toTrainingDay(): TrainingDay =
         day = day,
         description = description,
         contentDescription = contentDescription,
-        target = target,
+        icon = target.getIcon(),
     )
 
 private fun ExerciseEntity.toExercise(): Exercise =
@@ -31,3 +37,11 @@ private fun ExerciseEntity.toExercise(): Exercise =
         restTime = restTime,
         difficulty = difficulty,
     )
+
+private fun TargetMuscle.getIcon(): ImageVector =
+    when(this) {
+        TargetMuscle.BACK -> BackDayIcon
+        TargetMuscle.CHEST -> ChestDayIcon
+        TargetMuscle.LEGS -> LegDayIcon
+        TargetMuscle.UNKNOWN -> Icons.Default.Circle
+    }
