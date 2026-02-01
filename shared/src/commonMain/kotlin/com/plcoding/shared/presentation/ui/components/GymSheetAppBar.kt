@@ -1,7 +1,9 @@
 package com.plcoding.shared.presentation.ui.components
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,11 +20,13 @@ import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 fun GymSheetAppBar(
     title: String,
     hasPreviousPage: Boolean,
-    onBackClick: () -> Unit = {},
     modifier: Modifier = Modifier,
+    onBackClick: () -> Unit = {},
+    actions: @Composable RowScope.() -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
+        actions = actions,
         title = {
             Text(
                 title,
@@ -49,6 +53,14 @@ private fun GymSheetAppBarPreview() {
         GymSheetAppBar(
             title = "Gym Sheet",
             hasPreviousPage = false,
+            actions = {
+                IconButton(onClick = {}) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Edit icon",
+                    )
+                }
+            },
         )
     }
 }

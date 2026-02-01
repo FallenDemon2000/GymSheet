@@ -42,8 +42,11 @@ private fun AppNavHost(
             HomeScreen(onNavigate = onNavigate)
         }
         composable<Screens.Exercises> { navBackStackEntry ->
-            val trainingDay = navBackStackEntry.toRoute<Screens.Exercises>().trainingDay
-            ExercisesScreen(trainingDay = trainingDay, onBackClick = onBackClick)
+            ExercisesScreen(
+                trainingDay = navBackStackEntry.toRoute<Screens.Exercises>().trainingDay,
+                onBackClick = onBackClick,
+                onNavigate = onNavigate,
+            )
         }
     }
 }
