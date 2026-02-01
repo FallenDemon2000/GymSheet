@@ -1,12 +1,15 @@
 package com.plcoding.shared.presentation.ui.screens
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -32,6 +35,7 @@ import org.koin.core.parameter.parametersOf
 fun ExercisesScreen(
     trainingDay: Int,
     onBackClick: () -> Unit,
+    onNavigate: (Screens) -> Unit,
     exercisesViewModel: ExercisesViewModel = koinInject { parametersOf(trainingDay) },
 ) {
     val exercisesState by exercisesViewModel.uiState.collectAsState()
@@ -46,7 +50,7 @@ fun ExercisesScreen(
         exercisesViewModel.updateExercise(updatedExercise)
     }
 
-    Scaffold(topBar = getTopBar(trainingDay, onBackClick)) { paddingValues ->
+    Scaffold(topBar = getTopBar(trainingDay, onBackClick, onNavigate)) { paddingValues ->
         when (exercisesState) {
             is ExercisesUiState.Loading -> {
                 LoadingIndicator()
@@ -81,13 +85,10 @@ private fun ExercisesView(
 
     val onCardClick: (Int) -> Unit = {
         expandedCardIndex =
-            if(expandedCardIndex == it) -1 else it
+            if (expandedCardIndex == it) -1 else it
     }
 
-    LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(paddingValues),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-    ) {
+    LazyColumn(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
         itemsIndexed(items = exercises) { index, exercise ->
             ExerciseExpandableCard(
                 exercise = exercise,
@@ -95,19 +96,30 @@ private fun ExercisesView(
                 onCardClick = { onCardClick(index) },
                 onPlusClick = onPlusClick,
                 onMinusClick = onMinusClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 4.dp),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(horizontal = 4.dp, vertical = 8.dp),
             )
         }
     }
 }
 
-private fun getTopBar(day: Int, onBackClick: () -> Unit): @Composable (() -> Unit) = {
+private fun getTopBar(
+    day: Int,
+    onBackClick: () -> Unit,
+    onNavigate: (Screens) -> Unit,
+): @Composable (() -> Unit) = {
     GymSheetAppBar(
         title = "Day $day",
         hasPreviousPage = true,
         onBackClick = onBackClick,
+        actions = {
+            IconButton(onClick = { onNavigate }) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Edit icon",
+                )
+            }
+        }
     )
 }
 

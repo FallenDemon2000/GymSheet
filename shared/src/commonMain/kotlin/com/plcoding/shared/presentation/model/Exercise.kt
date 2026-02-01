@@ -20,7 +20,7 @@ data class Exercise(
                 reps = 0,
                 weight = 0f,
                 restTime = 0,
-                difficulty = Difficulty.Neutral,
+                difficulty = Difficulty.Hard,
             )
     }
 }
