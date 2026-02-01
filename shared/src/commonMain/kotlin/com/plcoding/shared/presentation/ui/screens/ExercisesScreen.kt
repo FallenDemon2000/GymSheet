@@ -36,6 +36,16 @@ fun ExercisesScreen(
 ) {
     val exercisesState by exercisesViewModel.uiState.collectAsState()
 
+    val onPlusClick: (Exercise) -> Unit = { exercise ->
+        val updatedExercise = exercise.copy(weight = exercise.weight?.plus(2.5f))
+        exercisesViewModel.updateExercise(updatedExercise)
+    }
+
+    val onMinusClick: (Exercise) -> Unit = { exercise ->
+        val updatedExercise = exercise.copy(weight = exercise.weight?.minus(2.5f))
+        exercisesViewModel.updateExercise(updatedExercise)
+    }
+
     Scaffold(topBar = getTopBar(trainingDay, onBackClick)) { paddingValues ->
         when (exercisesState) {
             is ExercisesUiState.Loading -> {
@@ -51,6 +61,8 @@ fun ExercisesScreen(
                 val state = exercisesState as ExercisesUiState.Success
                 ExercisesView(
                     exercises = state.exercises,
+                    onPlusClick = onPlusClick,
+                    onMinusClick = onMinusClick,
                     paddingValues = paddingValues,
                 )
             }
@@ -61,6 +73,8 @@ fun ExercisesScreen(
 @Composable
 private fun ExercisesView(
     exercises: List<Exercise>,
+    onPlusClick: (Exercise) -> Unit,
+    onMinusClick: (Exercise) -> Unit,
     paddingValues: PaddingValues = PaddingValues(),
 ) {
     var expandedCardIndex by remember { mutableStateOf(-1) }
@@ -79,8 +93,8 @@ private fun ExercisesView(
                 exercise = exercise,
                 isExpanded = expandedCardIndex == index,
                 onCardClick = { onCardClick(index) },
-                onPlusClick = {},
-                onMinusClick = {},
+                onPlusClick = onPlusClick,
+                onMinusClick = onMinusClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 4.dp),
@@ -103,6 +117,8 @@ private fun ExercisesScreenPreview() {
     GymSheetTheme {
         ExercisesView(
             exercises = List(7) { Exercise.empty },
+            onPlusClick = {},
+            onMinusClick = {},
         )
     }
 }
@@ -113,6 +129,8 @@ private fun ExercisesScreenPreviewDarkTheme() {
     GymSheetTheme(darkTheme = true) {
         ExercisesView(
             exercises = List(7) { Exercise.empty },
+            onPlusClick = {},
+            onMinusClick = {},
         )
     }
 }
