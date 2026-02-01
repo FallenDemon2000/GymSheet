@@ -4,11 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.plcoding.shared.presentation.model.Difficulty
 
 @Entity(
     tableName = "exercise", foreignKeys = [
         ForeignKey(
-            entity = TrainingDay::class,
+            entity = TrainingDayEntity::class,
             parentColumns = arrayOf("day"),
             childColumns = arrayOf("day"),
             onDelete = ForeignKey.CASCADE,
@@ -16,7 +17,7 @@ import androidx.room.PrimaryKey
         )
     ]
 )
-data class Exercise(
+data class ExerciseEntity(
     @PrimaryKey val id: Int? = null,
     @ColumnInfo(index = true) val day: Int,
     val name: String,
@@ -25,17 +26,4 @@ data class Exercise(
     val weight: Float? = null,
     val restTime: Int,
     val difficulty: Difficulty = Difficulty.Neutral,
-) {
-    companion object {
-        val empty
-            get() = Exercise(
-                name = "Exercise",
-                day = 0,
-                sets = 0,
-                reps = 0,
-                weight = 0f,
-                restTime = 0,
-                difficulty = Difficulty.Neutral,
-            )
-    }
-}
+)

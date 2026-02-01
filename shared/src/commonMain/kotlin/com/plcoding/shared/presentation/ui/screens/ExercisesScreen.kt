@@ -17,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.plcoding.shared.data.model.Exercise
+import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.presentation.ui.components.ErrorMessage
 import com.plcoding.shared.presentation.ui.components.ExerciseExpandableCard
 import com.plcoding.shared.presentation.ui.components.GymSheetAppBar

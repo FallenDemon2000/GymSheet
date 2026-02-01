@@ -4,10 +4,10 @@ import androidx.room.ConstructedBy
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
-import com.plcoding.shared.data.model.Exercise
-import com.plcoding.shared.data.model.TrainingDay
+import com.plcoding.shared.data.model.ExerciseEntity
+import com.plcoding.shared.data.model.TrainingDayEntity
 
-@Database(version = 1, entities = [TrainingDay::class, Exercise::class])
+@Database(version = 1, entities = [TrainingDayEntity::class, ExerciseEntity::class])
 @ConstructedBy(ExerciseDatabaseConstructor::class)
 abstract class ExercisesDatabase : RoomDatabase() {
     abstract fun exercisesDao(): ExercisesDao

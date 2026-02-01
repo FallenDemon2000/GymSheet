@@ -4,8 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.plcoding.shared.data.model.Exercise
-import com.plcoding.shared.data.model.TrainingDay
+import com.plcoding.shared.data.model.ExerciseEntity
+import com.plcoding.shared.data.model.TrainingDayEntity
 import com.plcoding.shared.data.model.TrainingDaysAndExercise
 import kotlinx.coroutines.flow.Flow
 
@@ -17,11 +17,11 @@ interface ExercisesDao {
 
     @Transaction
     @Query("SELECT * FROM exercise WHERE day = :day")
-    fun getExercisesByDay(day: Int): Flow<List<Exercise>>
+    fun getExercisesByDay(day: Int): Flow<List<ExerciseEntity>>
 
     @Insert
-    suspend fun insertDays(vararg trainingDay: TrainingDay)
+    suspend fun insertDays(vararg trainingDay: TrainingDayEntity)
 
     @Insert
-    suspend fun insertExercises(vararg exercise: Exercise)
+    suspend fun insertExercises(vararg exercise: ExerciseEntity)
 }

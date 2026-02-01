@@ -1,6 +1,6 @@
 package com.plcoding.shared.presentation.ui.uistate
 
-import com.plcoding.shared.data.model.TrainingDay
+import com.plcoding.shared.presentation.model.TrainingDay
 
 sealed interface TrainingDaysUiState {
     object Loading: TrainingDaysUiState

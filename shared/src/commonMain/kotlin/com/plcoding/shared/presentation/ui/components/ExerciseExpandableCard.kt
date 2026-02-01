@@ -29,7 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.plcoding.shared.ktx.formatNumber
-import com.plcoding.shared.data.model.Exercise
+import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.presentation.ui.theme.GymSheetTheme
 
 @Composable
