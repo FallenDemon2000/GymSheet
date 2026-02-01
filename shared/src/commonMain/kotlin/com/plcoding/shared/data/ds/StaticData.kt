@@ -40,10 +40,10 @@ object StaticData {
         )
 
     private val chestExercises: Array<ExerciseEntity> = arrayOf(
-        ExerciseEntity(day = chestDay.day, name = "Bench Press", sets = 3, reps = 10, weight = 22f, restTime = 3, difficulty = Difficulty.Easy),
+        ExerciseEntity(day = chestDay.day, name = "Bench Press", sets = 3, reps = 10, weight = 22.5f, restTime = 3, difficulty = Difficulty.Easy),
         ExerciseEntity(day = chestDay.day, name = "Dips", sets = 3, reps = 10, weight = null, restTime = 3, difficulty = Difficulty.Neutral),
-        ExerciseEntity(day = chestDay.day, name = "Peck Deck", sets = 2, reps = 12, weight = 52f, restTime = 2, difficulty = Difficulty.Easy),
-        ExerciseEntity(day = chestDay.day, name = "Shoulder Press", sets = 2, reps = 12, weight = 17f, restTime = 2, difficulty = Difficulty.Neutral),
+        ExerciseEntity(day = chestDay.day, name = "Peck Deck", sets = 2, reps = 12, weight = 52.5f, restTime = 2, difficulty = Difficulty.Easy),
+        ExerciseEntity(day = chestDay.day, name = "Shoulder Press", sets = 2, reps = 12, weight = 17.5f, restTime = 2, difficulty = Difficulty.Neutral),
         ExerciseEntity(day = chestDay.day, name = "Kickback triceps", sets = 3, reps = 12, weight = 20f, restTime = 2, difficulty = Difficulty.Hard),
         ExerciseEntity(day = chestDay.day, name = "Overhead triceps", sets = 3, reps = 12, weight = 20f, restTime = 2, difficulty = Difficulty.Neutral),
         ExerciseEntity(day = chestDay.day, name = "Treadmill Sprints", sets = 3, reps = 2, weight = null, restTime = 1, difficulty = Difficulty.Neutral),
@@ -61,7 +61,7 @@ object StaticData {
     private val legExercises: Array<ExerciseEntity> = arrayOf(
         ExerciseEntity(day = legDay.day, name = "Squats", sets = 4, reps = 10, weight = 25f, restTime = 3, difficulty = Difficulty.Easy),
         ExerciseEntity(day = legDay.day, name = "Leg Press", sets = 3, reps = 10, weight = 65f, restTime = 3, difficulty = Difficulty.Easy),
-        ExerciseEntity(day = legDay.day, name = "Leg Curls", sets = 3, reps = 12, weight = 52f, restTime = 2, difficulty = Difficulty.Easy),
+        ExerciseEntity(day = legDay.day, name = "Leg Curls", sets = 3, reps = 12, weight = 52.5f, restTime = 2, difficulty = Difficulty.Easy),
         ExerciseEntity(day = legDay.day, name = "Leg extensions", sets = 2, reps = 12, weight = 70f, restTime = 2, difficulty = Difficulty.Easy),
         ExerciseEntity(day = legDay.day, name = "Hip abductor", sets = 3, reps = 12, weight = 80f, restTime = 2, difficulty = Difficulty.Easy),
         ExerciseEntity(day = legDay.day, name = "Abs workout", sets = 3, reps = 12, weight = null, restTime = 2, difficulty = Difficulty.Neutral),
