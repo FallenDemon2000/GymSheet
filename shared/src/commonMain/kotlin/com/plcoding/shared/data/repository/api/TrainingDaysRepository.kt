@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface TrainingDaysRepository {
     suspend fun getTrainingDays(): Flow<List<TrainingDay>>
     suspend fun getExercises(day: Int): Flow<List<Exercise>>
+    suspend fun updateExercise(exercise: Exercise)
 }

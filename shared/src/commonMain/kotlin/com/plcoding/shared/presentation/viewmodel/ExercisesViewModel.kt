@@ -2,6 +2,7 @@ package com.plcoding.shared.presentation.viewmodel
 
 import com.plcoding.shared.BaseViewModel
 import com.plcoding.shared.data.repository.api.TrainingDaysRepository
+import com.plcoding.shared.presentation.model.Exercise
 import com.plcoding.shared.presentation.ui.uistate.ExercisesUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,5 +33,9 @@ class ExercisesViewModel(
                     ?: ExercisesUiState.Error(message = "No exercises for this day")
             }
         }
+    }
+
+    fun updateExercise(exercise: Exercise) = scope.launch {
+        trainingDaysRepository.updateExercise(exercise)
     }
 }

@@ -37,8 +37,8 @@ fun ExerciseExpandableCard(
     exercise: Exercise,
     isExpanded: Boolean,
     onCardClick: () -> Unit,
-    onPlusClick: () -> Unit,
-    onMinusClick: () -> Unit,
+    onPlusClick: (Exercise) -> Unit,
+    onMinusClick: (Exercise) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showEditDialog by remember { mutableStateOf(false) }
@@ -48,7 +48,7 @@ fun ExerciseExpandableCard(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        IconButton(onClick = onMinusClick) {
+        IconButton(onClick = { onMinusClick(exercise) }) {
             Icon(
                 imageVector = Icons.Default.Remove,
                 contentDescription = "Edit icon",
@@ -62,7 +62,7 @@ fun ExerciseExpandableCard(
             modifier = Modifier.weight(1f),
         )
         Column {
-            IconButton(onClick = onPlusClick) {
+            IconButton(onClick = { onPlusClick(exercise) }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Edit icon",

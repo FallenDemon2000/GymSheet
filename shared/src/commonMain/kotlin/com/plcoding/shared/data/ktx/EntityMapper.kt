@@ -19,6 +19,18 @@ fun List<TrainingDaysAndExercise>.mapToTrainingDay(): List<TrainingDay> =
 fun List<ExerciseEntity>.mapToExercise(): List<Exercise> =
     map { it.toExercise() }
 
+fun Exercise.mapToEntity(): ExerciseEntity =
+    ExerciseEntity(
+        id = id,
+        day = day,
+        name = name,
+        sets = sets,
+        reps = reps,
+        weight = weight,
+        restTime = restTime,
+        difficulty = difficulty,
+    )
+
 private fun TrainingDayEntity.toTrainingDay(): TrainingDay =
     TrainingDay(
         day = day,
@@ -29,6 +41,7 @@ private fun TrainingDayEntity.toTrainingDay(): TrainingDay =
 
 private fun ExerciseEntity.toExercise(): Exercise =
     Exercise(
+        id = id,
         day = day,
         name = name,
         sets = sets,
