@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.plcoding.shared.data.model.ExerciseEntity
 import com.plcoding.shared.data.model.TrainingDayEntity
 import com.plcoding.shared.data.model.TrainingDaysAndExercise
@@ -24,4 +25,7 @@ interface ExercisesDao {
 
     @Insert
     suspend fun insertExercises(vararg exercise: ExerciseEntity)
+
+    @Update
+    suspend fun updateExercise(exercise: ExerciseEntity)
 }
